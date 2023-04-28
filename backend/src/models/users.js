@@ -1,0 +1,65 @@
+const mongoose=require("mongoose")
+const Schema=mongoose.Schema
+const userSchema=new Schema({
+    firstname:{
+        type:String,
+        required:true
+    },
+    lastname:{
+        type:String,
+        required:true
+    },
+    username:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true,
+        unique:1
+    },
+    age:{
+        type:String,
+        required:true
+    },
+    contact:{
+        type:String,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true,
+        minlength:6
+    },
+    numFollowers:{
+        type:String,
+        required:true,
+        default:"2"
+    },
+    numFollowing:{
+        type:String,
+        required:true,
+        default:"2"
+    },
+    followers:{
+        type:Array,
+        items:{
+            type:String
+        }
+        // ,default:["63f6a75f7ca3ded6369e63dc","63f6a968bd833028e20fcbf4"]
+    },
+    following:{
+        type:Array,
+        items:{
+            type:String
+        }
+        // ,default:["63f6a75f7ca3ded6369e63dc","63f6a968bd833028e20fcbf4"]
+    },
+    saved:{
+        type:Array,
+        items:{
+            type:String
+        }
+    }
+})
+module.exports=mongoose.model("user",userSchema)
